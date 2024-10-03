@@ -49,10 +49,18 @@
     </style>
 </head>
 <body>
-    <div class="gallery">
-        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image">
-        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image">
-        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image">
+    <div>
+        <h3>Filter by Tags:</h3>
+        <label><input type="checkbox" value="butterfly"> Butterfly</label>
+        <label><input type="checkbox" value="sparkle"> Sparkle</label>
+        <label><input type="checkbox" value="forest"> Forest</label>
+        <label><input type="checkbox" value="cute"> Cute</label>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image" data-tags="butterfly, cute">
+        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image" data-tags="sparkle, cute">
+        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image" data-tags="forest, cute">
         <!-- Add more images as needed -->
     </div>
 
@@ -64,7 +72,9 @@
     </div>
 
     <script>
-        const images = document.querySelectorAll('.gallery img');
+        const images = Array.from(document.querySelectorAll('.gallery img'));
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const gallery = document.getElementById('gallery');
         const modal = document.getElementById('lightboxModal');
         const modalImage = document.getElementById('modalImage');
         const modalDescription = document.getElementById('modalDescription');
@@ -104,6 +114,26 @@
             e.stopPropagation();
             currentIndex = (currentIndex + 1) % images.length;
             modalImage.src = images[currentIndex].src;
+        });
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const selectedTags = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
+                images.forEach(img => {
+                    const tags = img.getAttribute('data-tags').split(', ');
+                    if (selectedTags.every(tag => tags.includes(tag))) {
+                        img.style.display = 'inline';
+                    } else {
+                        img.style.display = 'none';
+                    }
+                });
+
+                if (selectedTags.length === 0) {
+                    images.forEach(img => img.style.display = 'inline');
+                }
+            });
         });
     </script>
 </body>
