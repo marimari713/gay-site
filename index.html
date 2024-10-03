@@ -287,14 +287,17 @@
             // Create and append image A
             const imgAContainer = document.createElement('div');
             imgAContainer.className = 'image-a';
+            imgAContainer.style.position = 'absolute';
+            imgAContainer.style.zIndex = '2';
             imgAContainer.innerHTML = `<img style="width:200px; height:200px;" src="${a}" alt="Widebunny A">`;
             container.appendChild(imgAContainer);
 
             // Create and append image B
             const imgBContainer = document.createElement('div');
             imgBContainer.className = 'image-b';
-            imgBContainer.style.position = 'relative';
-            imgBContainer.innerHTML = `<img src="${b}" alt="Widebunny B" style="width:200px; height:200px;bottom: 800px;">`;
+            imgBContainer.style.position = 'absolute';
+            imgBContainer.style.zIndex = '1';
+            imgBContainer.innerHTML = `<img src="${b}" alt="Widebunny B" style="width:200px; height:200px;">`;
             container.appendChild(imgBContainer);
 
             // Create dropdown menu
