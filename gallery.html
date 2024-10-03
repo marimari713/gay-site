@@ -78,6 +78,7 @@
     </div>
 
     <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const images = Array.from(document.querySelectorAll('.gallery img'));
         const videos = Array.from(document.querySelectorAll('.gallery video'));
         const gallery = document.getElementById('gallery');
@@ -160,14 +161,14 @@
                 allMedia.forEach(item => {
                     const tags = item.getAttribute('data-tags').split(', ');
                     if (selectedTags.every(tag => tags.includes(tag))) {
-                        img.style.display = 'inline';
+                        item.style.display = 'inline';
                     } else {
-                        img.style.display = 'none';
+                        item.style.display = 'none';
                     }
                 });
 
                 if (selectedTags.length === 0) {
-                    images.forEach(img => img.style.display = 'inline');
+                    allMedia.forEach(item => item.style.display = 'inline');
                 }
             });
         });
