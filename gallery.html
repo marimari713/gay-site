@@ -6,11 +6,18 @@
     <title>Image Gallery</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-rows: auto 1fr;
             background-color: AliceBlue;
             margin: 0;
+            height: 100vh;
+        }
+        .tag-container {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
         }
         .tag-container {
             display: flex;
@@ -85,7 +92,7 @@
         </div>
     </div>
 
-    <div class="gallery" id="gallery">
+    <div class="gallery" id="gallery" style="grid-column: 2;">
         <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image" data-tags="butterfly, cute, spooky">
         <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image" data-tags="sparkle, cute">
         <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image" data-tags="forest, cute, spooky">
