@@ -33,7 +33,7 @@
         }
         .gallery img, .gallery video {
             width: 22%;
-            height: auto;
+            height: 60%;
             aspect-ratio: auto;
             cursor: pointer;
             margin: 5px;
@@ -185,7 +185,10 @@
 
             const searchQuery = searchInput.value.toLowerCase();
 
+            const anyTagsSelected = selectedTags.length > 0;
+
             mediaItems.forEach(item => {
+                item.style.height = anyTagsSelected ? 'auto' : '60%';
                 const fileName = item.src.split('/').pop().toLowerCase();
                 const description = item.getAttribute('data-description').toLowerCase();
                 const tags = item.getAttribute('data-tags').split(', ');
