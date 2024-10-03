@@ -32,10 +32,9 @@
             flex-wrap: wrap;
         }
         .gallery img, .gallery video {
-            width: auto;
-            height: auto;
-            max-width: 200px;
-            max-height: 200px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
             cursor: pointer;
             margin: 5px;
         }
@@ -74,11 +73,9 @@
         .arrow.right {
             right: 20px;
         }
-        .tag-filters {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
+        #dateFilter {
+            width: auto;
+            padding: 5px;
         }
         .tag-filters label {
             margin-right: 10px;
