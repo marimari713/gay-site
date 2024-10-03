@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+ 
+        <!-- viewport - for mobile screens -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+        <!-- favicon & title -->
+        <link rel="shortcut icon" href="FAVICON LINK HERE">
+        <title>TITLE HERE</title>
+ 
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        :root{
+            --lace: var(--black); /* change pink to the color you want */ 
+            /* options are: pink, black, blue, yellow, purple */
+            --pink: url("https://files.catbox.moe/bsr34l.png");
+            --black: url("https://files.catbox.moe/stv815.png");
+            --blue: url("https://files.catbox.moe/pweyk3.png");
+            --yellow: url("https://files.catbox.moe/r3ub8h.png");
+            --purple: url("https://files.catbox.moe/acs8xi.png");
+        }
+        
+        /****** fonts ******/
+        @font-face {
+            font-family: scratch boys;
+            src: url(https://files.catbox.moe/1sb02z.ttf);
+        }
+        
+        @font-face {
+            font-family: cerl;
+            src: url(https://dl.dropbox.com/s/vaz4fe5yzk1uiku/CHERL___.TTF);
+        }
+        
+        @font-face {
+            font-family: Adorable Doll;
+            src: url(https://dl.dropbox.com/s/plehp3a9xbtct7n/AdorableDoll.ttf);
+        }
+        
+        @font-face{
+            font-family: vintage;
+            src: url(https://files.catbox.moe/nwq0cf.ttf);
+        }
+        
+        /****** scrollbar ******/
+        ::-webkit-scrollbar{
+            display:none;
+        }
+ 
+        /****** select hightlight ******/
+        ::selection {
+            background: #7053d0;
+            color:white;
+        }
+ 
+        ::-moz-selection {
+            background: #7053d0;
+            color:white;
+        }
+        
+        /****** body ******/
+        body {
+            background-color:#ffffff;
+            background-image:url();
+            background-repeat: repeat;
+            background-position: 0 0;
+            background-attachment: fixed;
+            color:#7053d0; /* default font color */
+            font-family:ms gothic; /* default font */
+            font-size:20px; /* default font size */
+            padding:10px;
+            background-image:  linear-gradient(#7053d0 1px, transparent 1px), linear-gradient(to right, #7053d0 1px, #c3bcfa 1px);
+            background-size: 20px 20px;
+        }
+ 
+        /****** links ******/
+        a{
+            text-decoration: none;
+            color:#fff;
+            transition:0.3s;
+            text-shadow: -1px 0 #7053d0, 0 1px #7053d0, 1px 0 #7053d0, 0 -1px #7053d0;
+        }
+ 
+        a:hover{
+            cursor:help;
+            transition:0.3s;
+            color:#7053d0;
+            text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+        }
+ 
+        /****** wrappers ******/
+        #wrapper{
+            animation: fadeEffect 1s;
+            margin: auto;
+            width:fit-content;
+            width: -moz-fit-content;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position:absolute;
+        }
+ 
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        /****** containers ******/
+        .container {  
+            display: grid;
+            margin: auto;
+            width:1000px;
+            grid-template-columns: 250px 1fr 1fr 250px;
+            grid-template-rows: 250px 250px 0.1fr;
+            gap: 10px 10px;
+            grid-auto-flow: row;
+            grid-template-areas:
+            "icon main main links"
+            "updates main main box"
+            "footer footer footer footer";
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round; 
+        }
+
+        .main { 
+            grid-area: main;
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round; 
+            padding:10px;
+            overflow:auto;
+        }
+
+        .icon { 
+            grid-area: icon;
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round; 
+            padding:10px;
+        }
+        
+        .icon img{
+            width:100%;
+            display:block;
+            height:auto;
+        }
+
+        .updates { 
+            grid-area: updates; 
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round;
+            padding:10px;
+            overflow:auto;
+            line-height:130%;
+        }
+
+        .links { 
+            grid-area: links; 
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round; 
+            padding:10px;
+            text-align: center;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box { 
+            grid-area: box; 
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round;
+            padding:10px;
+        }
+        
+        .footer{
+            grid-area: footer;
+            text-align:center;
+            border-width:10px;
+            border-style:solid;
+            border-image: var(--lace) 8 fill round;
+        }
+        
+        header{
+            text-align: center;
+            font-family:Adorable Doll;
+            font-size:40px;
+            margin-bottom:10px;
+        }
+        
+        .cornerimg{
+            position:absolute;
+            bottom:0;
+            right:0;
+        }
+        
+        .highlight{
+            background-color:#7053d0;
+            color:white;
+        }
+        
+    </style>
+    <body>
+        
+        <div id="wrapper">
+            
+            <div class="container">
+
+
+                <div class="main">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At imperdiet dui accumsan sit. Porttitor massa id neque aliquam vestibulum. Cursus sit amet dictum sit amet justo. Consectetur a erat nam at lectus urna duis. Leo duis ut diam quam nulla porttitor massa. Mi eget mauris pharetra et. At elementum eu facilisis sed. <span class="highlight">Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Sed blandit libero volutpat sed.</span> Ac turpis egestas sed tempus urna. Gravida quis blandit turpis cursus in hac. Sit amet aliquam id diam maecenas ultricies mi eget. Aliquam ultrices sagittis orci a scelerisque. Phasellus egestas tellus rutrum tellus pellentesque eu. Sit amet justo donec enim diam. Arcu bibendum at varius vel pharetra vel turpis. Nunc faucibus a pellentesque sit amet porttitor eget dolor. Volutpat sed cras ornare arcu dui vivamus arcu.<br><br>
+
+                    Neque volutpat ac tincidunt vitae semper quis lectus nulla at. Non odio euismod lacinia at quis risus sed. <span class="highlight">Accumsan lacus vel facilisis volutpat est velit egestas dui. Vulputate sapien nec sagittis aliquam.</span> Id volutpat lacus laoreet non. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Ornare lectus sit amet est. In egestas erat imperdiet sed euismod nisi. Quisque sagittis purus sit amet volutpat consequat. Consectetur purus ut faucibus pulvinar elementum integer enim. Ultrices mi tempus imperdiet nulla. Quam quisque id diam vel quam elementum pulvinar etiam. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat.
+                </div>
+
+                <div class="icon">
+                    <img src="https://files.catbox.moe/tuxnn8.jpg">
+                </div>
+
+                <div class="updates">
+                    <header>updates</header>
+                    <span class="highlight">4.1.23</span> - weanus<br>
+                    <span class="highlight">3.31.23</span> - hi lol<br>
+                    <span class="highlight">3.30.23</span> - amongla<br>
+                    <span class="highlight">3.29.23</span> - blah<br>
+                    <span class="highlight">3.28.23</span> - lorem ipsum i guess<br>
+                    <span class="highlight">3.27.23</span> - why are you still reading this
+                </div>
+
+                <div class="links">
+                    <header>navigation</header>
+                    <a href="https://www.pixiv.net/en/artworks/103742485">one</a>
+                    <a>two</a>
+                    <a>three</a>
+                    <a>four</a>
+                    <a>five</a>
+                    <a>six</a>
+                </div>
+
+                <div class="box">
+                    you can put whatever you'd like in here :)
+                </div>
+                
+                <div class="footer">
+                    template by adilene @ adilene.net
+                </div>
+
+                <div class="cornerimg">
+                    <img src="https://files.catbox.moe/ge4sxq.png">
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,348 @@
+:root {
+	--lace: var(--purple); /* change pink to the color you want */
+	/* options are: pink, black, blue, yellow, purple */
+	--pink: url("https://files.catbox.moe/bsr34l.png");
+	--black: url("https://files.catbox.moe/stv815.png");
+	--blue: url("https://files.catbox.moe/pweyk3.png");
+	--yellow: url("https://files.catbox.moe/r3ub8h.png");
+	--purple: url("/images/bsr34l.png");
+}
+* {cursor: url(https://applesause.nekoweb.org/heartwing.cur),  auto !important;}
+
+/****** fonts ******/
+@font-face {
+	font-family: FOT;
+	src: url(https://applesause.nekoweb.org/fonts/fot-yuruka-std.ttf);
+}
+
+@font-face {
+	font-family: Cherry;
+	src: url("https://applesause.nekoweb.org/fonts/CherryBombOne-Regular.ttf")
+	
+}
+
+@font-face {
+	font-family: cerl;
+	src: url(https://dl.dropbox.com/s/vaz4fe5yzk1uiku/CHERL___.TTF);
+}
+
+@font-face {
+	font-family: Adorable Doll;
+	src: url(https://dl.dropbox.com/s/plehp3a9xbtct7n/AdorableDoll.ttf);
+}
+
+@font-face {
+	font-family: KakomiC;
+	src: url(https://applesause.nekoweb.org/fonts/KakomiC.ttf);
+}
+
+/****** scrollbar ******/
+::-webkit-scrollbar {
+	display: none;
+}
+
+/****** select hightlight ******/
+::selection {
+	background: #7053d0;
+	color: white;
+}
+
+::-moz-selection {
+	background: #7053d0;
+	color: white;
+}
+
+/****** body ******/
+body {
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	padding: 0px;
+	transition: background-image 0.5s ease-in-out;
+}
+
+/****** links ******/
+a {
+	text-decoration: none;
+	color: #fff;
+	transition: 0.3s;
+	text-shadow:
+		-1px 0 #7053d0,
+		0 1px #7053d0,
+		1px 0 #7053d0,
+		0 -1px #7053d0;
+}
+
+a:hover {
+	cursor: help;
+	transition: 0.3s;
+	color: #7053d0;
+	text-shadow:
+		-1px 0 #fff,
+		0 1px #fff,
+		1px 0 #fff,
+		0 -1px #fff;
+}
+
+/****** wrappers ******/
+#wrapper {
+	animation: fadeEffect 1s;
+	margin: auto;
+	width: fit-content;
+	width: -moz-fit-content;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+@keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes rotating {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(-25deg);
+	}
+}
+
+@keyframes rotating2 {
+	0% {
+		transform: rotate(-25deg);
+	}
+
+	100% {
+		transform: rotate(-35deg);
+	}
+}
+
+@keyframes rotateicon {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(-20deg);
+	}
+}
+
+@keyframes rotateiconedit {
+	0% {
+		transform: rotate(20deg);
+	}
+
+	100% {
+		transform: rotate(30deg);
+	}
+}
+
+@keyframes ScaredBunny {
+	0% {
+		transform: rotate(17deg);
+	}
+
+	100% {
+		transform: rotate(27deg);
+	}
+}
+
+
+/****** containers ******/
+.container {
+	display: grid;
+	margin: 4% auto;
+	height: 500px;
+	width: 1000px;
+	grid-template-columns: 250px 1fr 1fr 250px;
+	grid-template-rows: 250px 250px 0.1fr;
+	gap: 10px 10px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		"icon main main links"
+		"updates main main box"
+		"footer footer footer footer";
+		
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 8 fill round;
+}
+
+.main {
+	grid-area: main;
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 8 fill round;
+	padding: 10px;
+	overflow: auto;
+}
+
+.icon {
+	grid-area: icon;
+
+	padding: -10px;
+
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	mask-position: center;
+	animation: rotateicon 2s steps(2) infinite;
+	transform-origin: center;
+	overflow: hidden;
+}
+
+.icon img {
+	width: 100%;
+	display: block;
+	height: auto;
+}
+
+.updates {
+	grid-area: updates;
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 8 fill round;
+	padding: 20px;
+	overflow: auto;
+	line-height: 130%;
+	height: 130px;
+	width: 130px;
+}
+
+.links {
+	grid-area: links;
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 8 fill round;
+	padding: 10px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.box {
+	grid-area: box;
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 8 fill round;
+	padding: 8px;
+}
+
+.footer {
+	grid-area: footer;
+
+	text-align: center;
+	border-width: 10px;
+	border-style: solid;
+	border-image: var(--lace) 6 fill round;
+}
+
+.header {
+	text-align: center;
+	font-family: Adorable Doll;
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.cornerimg {
+}
+
+.rotate-image {
+	position: fixed;
+	width: 340px; /* Adjust as needed */
+	height: 350px; /* Adjust as needed */
+	bottom: 31px; /* Distance from the bottom of the viewport */
+	right: 120px; /* Distance from the right of the viewport */
+	z-index: 1;
+}
+.highlight {
+	background-color: #7053d0;
+	color: white;
+}
+.pet {
+	position: fixed;
+	bottom: 5px; /* Distance from the bottom of the viewport */
+	right: 5px; /* Distance from the right of the viewport */
+	padding: 5px; /* Inner padding */
+	width: 300px; /* Fixed width */
+	border-width: 10px; /* Width of the border */
+	border-style: solid; /* Border style */
+	border-image: var(--lace) 8 fill round; /* Use your custom border image */
+}
+
+        .image-a {
+            position: relative; /* Allow movement */
+            cursor: pointer; /* Indicate it's clickable */
+            z-index: 2;
+            
+            
+        }
+        .image-b {
+            position: relative;  
+            transition: top 0.3s; /* Smooth transition when moving down */
+            z-index: 2;
+            
+        }
+        .image-a img, .image-b img, .image-c {
+            width: 150px; 
+            height: auto; 
+            display: block; 
+        }
+        .dropdown {
+            display: none; /* Initially hidden */
+            position: absolute; /* Overlay on top */
+            
+            
+            z-index: 2; /* Above image-c */
+            left: 40px; /* Center dropdown */
+            top: 260px;
+            padding: 0px; /* Add some padding */
+            margin-top: 1px; /* Space above dropdown */
+        }
+        .dropdown.active {
+            display: flex; /* Show dropdown when active */
+            flex-direction: column; /* Stack options vertically */
+            align-items: center; /* Center options */
+        }
+        .dropdown a {
+            text-decoration: none; /* Remove underline */
+            color: black; /* Change text color */
+            padding: 5px 10px; /* Add padding */
+            border: 1px solid transparent; /* Add border for hover effect */
+            transition: border 0.3s; /* Smooth transition for hover effect */
+            opacity: 0; /* Start as invisible */
+            animation: fadeIn 0.5s forwards; /* Apply fadeIn animation */
+        }
+        .dropdown a:hover {
+            border: 1px solid #ccc; /* Change border on hover */
+            background-color: #f0f0f0; /* Background on hover */
+        }
+        .image-c {
+            display: none; /* Initially hidden */
+            position: absolute; /* Background image */
+            left:40px;
+            
+            z-index: 1; /* Behind dropdown */
+        }
+
+        /* Keyframe animation for fade in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* Start fully transparent */
+                transform: translateY(-10px); /* Start slightly above */
+            }
+            100% {
+                opacity: 1; /* End fully opaque */
+                transform: translateY(0); /* End in original position */
+            }
+        }
+        
