@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home of the Depressed Landmine</title>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/fates bloom logo.ico"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<script src="script.js"></script>
+		<div class="wrapper">
+			
+			<!-- <div><a href="/test.html">happy?</a></div> 
+			use this code for later to make links and stuff-->
+		
+			<div class="container" style="z-index: 0;position: relative;">
+				<div class="icon">
+					<img
+						src=""
+						alt=""
+						data-random-image="/images/icons/tumblr_bdccbb499fcbd34765e5933a5c439d62_8ca18cee_250.jpg /images/icons/tumblr_85d7f54545265c9250d3c19e638468cc_4521a151_250.jpg /images/icons/tumblr_1eabcd625f762f505f51f5577f4f4253_a4df03a6_250.jpg /images/icons/tumblr_12133585239c6f1e841048196f57688b_edb50f07_250.jpg /images/icons/PFP1_Transparentfordiscord.png /images/icons/imintofatbitches.gif /images/icons/986949584754442241.webp /images/icons/dragongirl1.png /images/icons/dragongirl2.png /images/icons/dragongirl3.png"
+					/>
+				</div>
+
+				<!--this is the counter -->
+				<div
+				class="box"
+				style="height:20px;width:305px;position: relative; bottom:115%;right:1050px ;transform:rotate(-15deg);z-index: 2;animation: rotating2 1s steps(2) infinite; transform-origin: center; z-index: 1;"
+			>
+				<div
+					style="position: relative; bottom:30px;align-items: center;display: flex; "
+				>
+					<!-- FC2 Counter  Starts here -->
+
+					<div
+						id="currentRandom"
+						style="position: relative; display: flex; align-items: center;top:10px;"
+					>
+						꒰ঌCurrent Boy Kissers໒꒱
+					</div>
+					<script>
+						const Randomtext = ["Boy Kissers", "Boy Lovers", "Sanrio Girlies", "babygirls", "himbos", "Pet Sitters", "Maid Enjoyers","yaoi enjoyers","yuri lovers","isekai protags","Reloaders", "Chubby Enjoyers"];
+						const element = document.getElementById('currentRandom');
+
+						function randomizeText() {
+						    const randomIndex = Math.floor(Math.random() * Randomtext.length);
+						    element.innerHTML = `꒰ঌCurrent ${Randomtext[randomIndex]}໒꒱`;
+						}
+
+						setInterval(randomizeText, 2500); // Change every 2.5 seconds
+					</script>
+					<script
+						language="javascript"
+						type="text/javascript"
+						src="//counter1.fc2.com/views.php?id=39948870&main=1"
+					></script>
+					<noscript>
+						<img
+							src="//counter1.fc2.com/counter_now.php?id=39948870&main=1"
+						/>
+					</noscript>
+					<!-- FC2 Counter  Ends here -->
+				</div>
+				<!--social feed -->
+				<div style="position: relative; bottom:90px;"><iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe></div>
+				
+			</div>
+				
+			
+				<div>
+						<!-- Background Corner -->
+						<div id="nekocafe-status" style="position: absolute; bottom:200px; left:400px; z-index: 1;font-family:'Cherry';">
+						<script>const username = "applesause"; // change the username!!!
+						const posts_url = "https://cafe.frizzbees.dev/get_posts/1?name=";
+						const profile_url = "https://social.nekoweb.org/profile/?view=";
+						const post_url = "https://social.nekoweb.org/post/?id=";
+
+					// thanks max
+					(async () => {
+   				 try {
+        	const request = await fetch(posts_url + username,);
+       		 let json = await request.json();
+        	json = json[0]
+
+        	timestamp = json["timestamp"] * 1000
+        	time = new Date(timestamp).toUTCString();
+    
+        	div = document.getElementById("nekocafe-status")
+        
+        	div.innerHTML = `
+            <img id="nekocafe-pfp" src=${json["image"]} height=64">
+            <p id="nekocafe-poster"><a href="${profile_url + username}">${json["name"]}</a></p>
+            <p id="nekocafe-text"><a href="${post_url + json["id"]}">${json["post"]}</a></p>
+            <p id="nekocafe-time">${time}</p>
+        ` // make sure the height on the img fits your page!!!
+
+    } catch (error) {
+        console.error(error)
+    }
+})();</script></div>
+			<img
+			src="/cute background details/background cornor2.png"
+			style="position: relative;	height: 500px;width: 500px;left: 51%;"
+			/>
+			<img 
+			src="/images/pills.png" 
+			style="height: 200px;width: 180px;position: absolute; bottom: 78%; left:20%; transform: rotate(-30deg);"
+			/>
+			<img 
+			src="/images/pill.png" 
+			style="height: 40px;width: 80px;position: absolute; top: 128%; left:98%; transform: rotate(-40deg);"
+			/>
+			<!-- Bunny and knife -->
+			<div style="position: relative; right: 26%; bottom:80%; z-index: -1;">
+				<img src="/cute background details/cuteknife.png" style="position: relative; height: 170px;width: 35px;left: 180px;animation: rotateiconedit 1s steps(2) infinite; transform-origin: bottom center;"/>
+			<img src="/cute background details/bunnytwo.png" style="right: 10%;height: 170px;width: 170px; animation: rotateiconedit 1s steps(2) infinite; transform-origin: center;"/>
+			</div>
+			
+			<!-- Scared Bunny -->
+			<img
+			src="/cute background details/bunnyone.png"
+			style="z-index: 1;position: relative;height: 100px;width: 100px;left: 104%;bottom:106%;animation: ScaredBunny 2s steps(2) infinite; transform-origin: center;"
+			/>
+	</div>
+	<!-- Sticky Note -->
+			<div style="position: absolute; left: 81%; top: 62%; transform: rotate(-20deg);">
+				<img src="/cute background details/stickynoteshadow.png" style="height: 220px; width: 220px;"/>
+       			<div style="z-index: 1;position: absolute;left: 29%; top: 15%;transform: rotate(-2deg);">
+				<script>
+				
+// this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+
+
+
+(async () => {
+  try {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`,);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    if (document.getElementById("created")) document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    if (document.getElementById("updated")) document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    if (document.getElementById("visitors")) document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    if (document.getElementById("followers")) document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+  } catch (error) {
+    console.error(error);
+    // If you wish to insert some fallback here, you may do so!
+  }
+})();		
+   </script>
+				<p id="created" style="font-family:'Cherry'"><em>Created</em></p>
+				<p id="updated" style="font-family:'Cherry'"><em>Updated</em></p>
+				<p id="followers" style="font-family:'Cherry'"><em>Followers</em></p>
+				<p id="visitors" style="font-family:'Cherry'"><em>Visitors</em></p>
+				</div>
+			</div>
+	
+			
+				<img
+					src="/images/ge4sxq.png"
+					alt="Rotating Image"
+					style="position: relative; bottom: 20%; left: 100%; animation: rotating 1s steps(2) infinite; transform-origin: center;"
+				/>
+
+				<img
+					src="/images/ge4sxq.png"
+					alt="Rotating Image"
+					style="position: relative; z-index: 3;top: 160%; right: 400%; animation: rotating 1s steps(2) infinite; transform-origin: center;"
+				/>
+
+				<img
+					src="/images/Cheshirerecolor.png"
+					alt="Name logo for cheshire"
+					class="rotate-image"
+					style="transform: translateY(-50%) rotate(-17deg);z-index:2;"
+				/>
+				<div class="updates" style="margin: 10% auto;font-family:Cherry; ">
+					sup, this is my website, we chill
+					<br />
+					<span class="highlight">we ball</span>
+					<br />
+					Each refresh is different, so enjoy,
+				</div>
+<!-- Cheshire my beloved, she is above everything and her name tag is goated-->
+				<div class="pet" style="z-index:1;">
+					<iframe
+						width="314"
+						height="321"
+						scrolling="no"
+						src="https://gifypet.neocities.org/pet/pet.html?name=Cheshire&dob=1727236568&gender=b&element=Air&pet=https%3A%2F%2Ffiles.catbox.moe%2Ffiveoj.gif&map=https%3A%2F%2Ffiles.catbox.moe%2F9efk68.png&background=&tablecolor=%23f90fbe&textcolor=black"
+						frameborder="0"
+					></iframe>
+				</div>
+				<!-- put stuff later i guess -->
+				<div class="footer" style="height: 120px;width:1000px;">
+					<!-- random images on reload, use somewhere else later -->
+					<img
+						src=""
+						alt=""
+						data-random-image="/images/as001.gif /images/as002.gif /images/as003.gif /images/as004.gif /images/as005.gif /images/as006.gif /images/as007.gif /images/as008.gif /images/as009.gif /images/as010.gif"
+					/>
+
+					<!-- my gifs on the bottom -->
+
+					<img
+						src="/images/theythemlandmine.gif"
+						alt="blood gif with text saying they/them landmine"
+					/>
+					<img
+						src="/images/wrong.jpg"
+						alt="userbox saying this user is wrong about many things"
+					/>
+
+					<img
+						src="/images/miku.jpg"
+						alt="userbox saying this user loves miku"
+					/>
+
+					<img
+						src="/images/mermaid2.jpg"
+						alt="userbox saying this user is a mermaid"
+					/>
+
+					<img
+						src="/images/dk2.jpg"
+						alt="userbox saying this user has no style, This user has no grace."
+					/>
+					<img
+						src="/images/blinkiesCafe-Wb.gif"
+						alt="gif saying non binary pride"
+					/>
+					<img
+						src="/images/blinkiesCafe-LX.gif"
+						alt="gif saying monster fucker heart"
+					/>
+					<img
+						src="/images/blinkiesCafe-e2.gif"
+						alt="gif saying autism"
+					/>
+					<img
+						src="/images/blinkiesCafe-6j.gif"
+						alt="gif saying pan pride"
+					/>
+					<img
+						src="/images/blinkiesCafe-0X.gif"
+						alt="gif saying hold my hand? pleading emoji"
+					/>
+				</div>
+			</div>
+			<!--dropdown. lets pray -->
+			<div style="bottom: 600px; left: 50px; position: relative;z-index: 0;width:190px; height:450px;">
+    <div id="image-container"></div>
+    <img id="image-c" class="image-c" src="https://applesause.nekoweb.org/images/scrolls/paper.png" style="position: relative; bottom:170px ;width:100px; height:0; overflow: hidden; transition: height 0.5s;" alt="Image C">
+    <script>
+        // Define the image pairs
+        const imagePairs = [
+            { a: 'https://applesause.nekoweb.org/images/scrolls/scroll1A.png', b: 'https://applesause.nekoweb.org/images/scrolls/scroll1B.png' },
+            { a: 'https://applesause.nekoweb.org/images/as002.gif', b: 'https://applesause.nekoweb.org/images/as002.gif' },
+            { a: 'https://applesause.nekoweb.org/images/as003.gif', b: 'https://applesause.nekoweb.org/images/as003.gif' },
+            { a: 'https://applesause.nekoweb.org/images/as004.gif', b: 'https://applesause.nekoweb.org/images/as004.gif' },
+            { a: 'https://applesause.nekoweb.org/images/as005.gif', b: 'https://applesause.nekoweb.org/images/as005.gif' },
+        ];
+
+        // Function to pick a random image pair
+        function pickRandomImagePair() {
+            const randomIndex = Math.floor(Math.random() * imagePairs.length);
+            return imagePairs[randomIndex];
+        }
+
+        // Function to display the images
+        function displayImages() {
+            const { a, b } = pickRandomImagePair();
+            const container = document.getElementById('image-container');
+
+            // Clear previous images
+            container.innerHTML = '';
+
+            // Create and append image A
+            const imgAContainer = document.createElement('div');
+            imgAContainer.className = 'image-a';
+            imgAContainer.innerHTML = `<img style="width:200px; height:200px;" src="${a}" alt="Widebunny A">`;
+            container.appendChild(imgAContainer);
+
+            // Create and append image B
+            const imgBContainer = document.createElement('div');
+            imgBContainer.className = 'image-b';
+            imgBContainer.style.position = 'relative';
+            imgBContainer.innerHTML = `<img src="${b}" alt="Widebunny B" style="width:200px; height:200px;bottom: 800px;">`;
+            container.appendChild(imgBContainer);
+
+            // Create dropdown menu
+            const dropdown = document.createElement('div');
+            dropdown.className = 'dropdown';
+            dropdown.innerHTML = `
+                <a href="#" onclick="alert('Option 1 selected')">Option 1</a>
+                <a href="#" onclick="alert('Option 2 selected')">Option 2</a>
+                <a href="#" onclick="alert('Option 3 selected')">Option 3</a>
+            `;
+            container.appendChild(dropdown);
+
+            // Set up click event for image A
+            imgAContainer.onclick = () => {
+                const imageC = document.getElementById('image-c');
+                const isActive = dropdown.classList.toggle('active');
+                imageC.style.display = isActive ? 'block' : 'none';
+
+                // Move image B down if dropdown is active
+                const imgAHeight = imgAContainer.offsetHeight;
+                const imageCHeight = 280; // Set to the height of image C
+                imgBContainer.style.top = isActive ? `${imgAHeight + imageCHeight + 20}px` : '0'; // Adjust based on image C height
+
+                // Animate the height of image C
+                imageC.style.height = isActive ? '500px' : '0'; // Set to the height of image C
+                imageC.style.transition = 'height 0.2s'; // Add transition for smooth effect
+
+                // Reset opacity for animation
+                const links = dropdown.getElementsByTagName('a');
+                for (let i = 0; i < links.length; i++) {
+                    links[i].style.animationDelay = `${i * 0.1}s`; // Stagger the animations
+                    links[i].style.opacity = isActive ? '1' : '0'; // Set opacity for fade effect
+                }
+            };
+        }
+
+        // Run the display function on page load
+        window.onload = displayImages;
+    </script>
+</div>
+			<!--dropdown. lets pray -->
+			<p style="font-family:KakomiC; font-size:30px;">i-if you like my site, y-you can tell me on discord. "strawbunny___"</p>
+			</div>
+	</body>
+</html>
+<script src="./oneko.js"></script>
