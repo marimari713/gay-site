@@ -297,7 +297,8 @@
             imgBContainer.className = 'image-b';
             imgBContainer.style.position = 'absolute';
             imgBContainer.style.zIndex = '1';
-            imgBContainer.innerHTML = `<img src="${b}" alt="Widebunny B" style="width:200px; height:200px; top:50px;">`;
+            imgBContainer.style.top = '50px';
+            imgBContainer.innerHTML = `<img src="${b}" alt="Widebunny B" style="width:200px; height:200px;">`;
             container.appendChild(imgBContainer);
 
             // Create dropdown menu
