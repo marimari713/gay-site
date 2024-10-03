@@ -46,9 +46,9 @@
 </head>
 <body>
     <div class="gallery">
-        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1">
-        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2">
-        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3">
+        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="Description for Image 1">
+        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="Description for Image 2">
+        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="Description for Image 3">
         <!-- Add more images as needed -->
     </div>
 
@@ -56,13 +56,14 @@
         <span class="arrow left" id="prevArrow">&#10094;</span>
         <img id="modalImage" src="" alt="Enlarged Image">
         <span class="arrow right" id="nextArrow">&#10095;</span>
+        <div id="modalDescription" style="color: white; text-align: center; margin-top: 10px;"></div>
     </div>
 
     <script>
         const images = document.querySelectorAll('.gallery img');
         const modal = document.getElementById('lightboxModal');
         const modalImage = document.getElementById('modalImage');
-        const prevArrow = document.getElementById('prevArrow');
+        const modalDescription = document.getElementById('modalDescription');
         const nextArrow = document.getElementById('nextArrow');
         let currentIndex = 0;
 
@@ -70,8 +71,17 @@
             img.addEventListener('click', () => {
                 currentIndex = index;
                 modalImage.src = img.src;
+                modalDescription.textContent = img.getAttribute('data-description');
                 modal.style.display = 'flex';
             });
+            modalDescription.textContent = images[currentIndex].getAttribute('data-description');
+        });
+
+        nextArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % images.length;
+            modalImage.src = images[currentIndex].src;
+            modalDescription.textContent = images[currentIndex].getAttribute('data-description');
         });
 
         modal.addEventListener('click', (e) => {
