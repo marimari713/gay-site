@@ -77,8 +77,7 @@
 
     <script>
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const images = Array.from(document.querySelectorAll('.gallery img'));
-        const videos = Array.from(document.querySelectorAll('.gallery video'));
+        const mediaItems = Array.from(document.querySelectorAll('.gallery img, .gallery video'));
         const gallery = document.getElementById('gallery');
         const modal = document.getElementById('lightboxModal');
         const modalImage = document.getElementById('modalImage');
@@ -87,7 +86,6 @@
         const nextArrow = document.getElementById('nextArrow');
         let currentIndex = 0;
 
-        const mediaItems = images.concat(videos);
 
         mediaItems.forEach((item, index) => {
             item.addEventListener('click', () => {
@@ -98,21 +96,13 @@
                     modalVideo.style.display = 'none';
                     modalImage.style.display = 'block';
                 } else {
-                    modalImage.nextElementSibling.src = item.querySelector('source').src;
-                    modalImage.nextElementSibling.style.display = 'block';
+                    modalVideo.src = item.src;
+                    modalVideo.style.display = 'block';
                     modalImage.style.display = 'none';
                 }
                 modalDescription.textContent = item.getAttribute('data-description');
                 modal.style.display = 'flex';
             });
-        });
-            img.addEventListener('click', () => {
-                currentIndex = index;
-                modalImage.src = img.src;
-                modalDescription.textContent = img.getAttribute('data-description');
-                modal.style.display = 'flex';
-            });
-            modalDescription.textContent = images[currentIndex].getAttribute('data-description');
         });
 
         const updateModalContent = () => {
@@ -122,8 +112,8 @@
                 modalVideo.style.display = 'none';
                 modalImage.style.display = 'block';
             } else {
-                modalImage.nextElementSibling.src = currentItem.querySelector('source').src;
-                modalImage.nextElementSibling.style.display = 'block';
+                modalVideo.src = currentItem.src;
+                modalVideo.style.display = 'block';
                 modalImage.style.display = 'none';
             }
             modalDescription.textContent = currentItem.getAttribute('data-description');
@@ -147,8 +137,8 @@
 
         nextArrow.addEventListener('click', (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex + 1) % images.length;
-            modalImage.src = images[currentIndex].src;
+            currentIndex = (currentIndex + 1) % mediaItems.length;
+            updateModalContent();
         });
         const allMedia = images.concat(videos);
 
