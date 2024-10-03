@@ -89,14 +89,16 @@
         <label><input type="checkbox" value="cute"> Cute</label>
         <label><input type="checkbox" value="spooky"> Spooky</label>
         <label><input type="checkbox" value="video"> Videos</label>
+        <h3>Filter by Date:</h3>
+        <input type="date" id="dateFilter">
         </div>
     </div>
 
     <div class="gallery" id="gallery" style="grid-column: 2;">
-        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image" data-tags="butterfly, cute, spooky">
-        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image" data-tags="sparkle, cute">
-        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image" data-tags="forest, cute, spooky">
-        <video width="320" height="240" controls data-description="Sample video description" data-tags="video">
+        <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image" data-tags="butterfly, cute, spooky" data-date="2024-10-01">
+        <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image" data-tags="sparkle, cute" data-date="2024-10-02">
+        <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image" data-tags="forest, cute, spooky" data-date="2024-10-03">
+        <video width="320" height="240" controls data-description="Sample video description" data-tags="video" data-date="2024-10-04">
             <source src="https://applesause.nekoweb.org/images/H2Lg7iw_kDClR3Pj.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -161,14 +163,19 @@
             updateModalContent();
         });
 
+        const dateFilter = document.getElementById('dateFilter');
+
         const filterMediaItems = () => {
+            const selectedDate = dateFilter.value;
             const selectedTags = Array.from(checkboxes)
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value);
 
             mediaItems.forEach(item => {
                 const tags = item.getAttribute('data-tags').split(', ');
-                if (selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) {
+                const date = item.getAttribute('data-date');
+                if ((selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) &&
+                    (selectedDate === "" || selectedDate === date)) {
                     item.style.display = 'inline';
                 } else {
                     item.style.display = 'none';
@@ -180,7 +187,9 @@
             checkbox.addEventListener('change', filterMediaItems);
         });
 
-        // Initial filter to apply any pre-selected tags
+        dateFilter.addEventListener('change', filterMediaItems);
+
+        // Initial filter to apply any pre-selected tags or date
         filterMediaItems();
     </script>
 </body>
