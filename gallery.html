@@ -87,6 +87,8 @@
         const modalVideo = document.getElementById('modalVideo');
         const modalDescription = document.getElementById('modalDescription');
         const nextArrow = document.getElementById('nextArrow');
+        const prevArrow = document.getElementById('prevArrow');
+        const nextArrow = document.getElementById('nextArrow');
         let currentIndex = 0;
 
 
@@ -95,7 +97,6 @@
                 currentIndex = index;
                 if (item.tagName.toLowerCase() === 'img') {
                     modalImage.src = item.src;
-                    modalImage.style.display = 'block';
                     modalVideo.style.display = 'none';
                     modalImage.style.display = 'block';
                 } else {
@@ -121,10 +122,6 @@
             }
             modalDescription.textContent = currentItem.getAttribute('data-description');
         };
-            e.stopPropagation();
-            currentIndex = (currentIndex + 1) % mediaItems.length;
-            updateModalContent();
-        });
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -143,7 +140,27 @@
             currentIndex = (currentIndex + 1) % mediaItems.length;
             updateModalContent();
         });
-        const allMedia = images.concat(videos);
+        const filterMediaItems = () => {
+            const selectedTags = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            mediaItems.forEach(item => {
+                const tags = item.getAttribute('data-tags').split(', ');
+                if (selectedTags.length === 0 || selectedTags.every(tag => tags.includes(tag))) {
+                    item.style.display = 'inline';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        };
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterMediaItems);
+        });
+
+        // Initial filter to apply any pre-selected tags
+        filterMediaItems();
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
