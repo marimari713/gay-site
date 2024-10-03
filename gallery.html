@@ -72,7 +72,8 @@
 
     <div class="modal" id="lightboxModal">
         <span class="arrow left" id="prevArrow">&#10094;</span>
-        <img id="modalImage" src="" alt="Enlarged Image">
+        <img id="modalImage" src="" alt="Enlarged Image" style="display: none;">
+        <video id="modalVideo" controls style="display: none; max-width: 80%; max-height: 80%;"></video>
         <span class="arrow right" id="nextArrow">&#10095;</span>
         <div id="modalDescription" style="color: white; text-align: center; margin-top: 10px;"></div>
     </div>
@@ -84,6 +85,7 @@
         const gallery = document.getElementById('gallery');
         const modal = document.getElementById('lightboxModal');
         const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
         const modalDescription = document.getElementById('modalDescription');
         const nextArrow = document.getElementById('nextArrow');
         let currentIndex = 0;
@@ -96,7 +98,8 @@
                 if (item.tagName.toLowerCase() === 'img') {
                     modalImage.src = item.src;
                     modalImage.style.display = 'block';
-                    modalImage.nextElementSibling.style.display = 'none';
+                    modalVideo.style.display = 'none';
+                    modalImage.style.display = 'block';
                 } else {
                     modalImage.nextElementSibling.src = item.querySelector('source').src;
                     modalImage.nextElementSibling.style.display = 'block';
@@ -119,8 +122,8 @@
             const currentItem = mediaItems[currentIndex];
             if (currentItem.tagName.toLowerCase() === 'img') {
                 modalImage.src = currentItem.src;
+                modalVideo.style.display = 'none';
                 modalImage.style.display = 'block';
-                modalImage.nextElementSibling.style.display = 'none';
             } else {
                 modalImage.nextElementSibling.src = currentItem.querySelector('source').src;
                 modalImage.nextElementSibling.style.display = 'block';
@@ -129,7 +132,7 @@
             modalDescription.textContent = currentItem.getAttribute('data-description');
         };
             e.stopPropagation();
-            currentIndex = (currentIndex + 1) % images.length;
+            currentIndex = (currentIndex + 1) % mediaItems.length;
             updateModalContent();
         });
 
@@ -141,7 +144,7 @@
 
         prevArrow.addEventListener('click', (e) => {
             e.stopPropagation();
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
             updateModalContent();
         });
 
