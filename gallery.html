@@ -77,10 +77,16 @@
             font-size: 1em;
             color: black;
         }
-    </style>
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
 </head>
 <body>
-    <div class="tag-container">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by name or description">
+    </div>
         <div class="tag-filters">
         <h3>Filter by Tags:</h3>
         <label><input type="checkbox" value="butterfly"> Butterfly</label>
@@ -163,7 +169,7 @@
             updateModalContent();
         });
 
-        const dateFilter = document.getElementById('dateFilter');
+        const searchInput = document.getElementById('searchInput');
 
         const filterMediaItems = () => {
             const selectedDate = dateFilter.value;
@@ -171,10 +177,15 @@
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value);
 
+            const searchQuery = searchInput.value.toLowerCase();
+
             mediaItems.forEach(item => {
+                const fileName = item.src.split('/').pop().toLowerCase();
+                const description = item.getAttribute('data-description').toLowerCase();
                 const tags = item.getAttribute('data-tags').split(', ');
                 const date = item.getAttribute('data-date');
-                if ((selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) &&
+                if ((fileName.includes(searchQuery) || description.includes(searchQuery)) &&
+                    (selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) &&
                     (selectedDate === "" || selectedDate === date)) {
                     item.style.display = 'inline';
                 } else {
@@ -189,7 +200,9 @@
 
         dateFilter.addEventListener('change', filterMediaItems);
 
-        // Initial filter to apply any pre-selected tags or date
+        searchInput.addEventListener('input', filterMediaItems);
+
+        // Initial filter to apply any pre-selected tags, date, or search query
         filterMediaItems();
     </script>
 </body>
