@@ -34,15 +34,24 @@
             max-width: 90%;
             max-height: 90%;
         }
-        #nextButton {
+        #prevButton, #nextButton {
             position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
             z-index: 2;
             display: none;
         }
-        
+        #prevButton {
+            left: 20px;
+        }
+        #nextButton {
+            right: 20px;
+        }
         .close {
             position: absolute;
             top: 20px;
@@ -66,13 +75,15 @@
         <img id="modalImage" src="" alt="Enlarged Image">
     </div>
 
-    <button id="nextButton" style="z-index:1;">Next Image</button>
+    <button id="prevButton">&lt;</button>
+    <button id="nextButton">&gt;</button>
 
     <script>
         const images = document.querySelectorAll('.gallery img');
         const modal = document.getElementById('modal');
         const modalImage = document.getElementById('modalImage');
         const close = document.getElementById('close');
+        const prevButton = document.getElementById('prevButton');
         const nextButton = document.getElementById('nextButton');
         let currentIndex = 0;
 
@@ -91,10 +102,17 @@
 
         close.addEventListener('click', () => {
             modal.style.display = 'none';
-            nextButton.style.display = 'block';
-            nextButton.style.display = 'none';
+            prevButton.style.display = 'block';
+            prevButton.style.display = 'none';
             nextButton.style.display = 'none';
             updateNextButtonState();
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (modal.style.display === 'flex') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                modalImage.src = images[currentIndex].src;
+            }
         });
 
         nextButton.addEventListener('click', () => {
