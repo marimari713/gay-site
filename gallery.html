@@ -63,7 +63,7 @@
         <img src="https://applesause.nekoweb.org/images/choucho17.png" alt="Image 1" data-description="cute butterfly image" data-tags="butterfly, cute, spooky">
         <img src="https://applesause.nekoweb.org/images/kirakira90-.png" alt="Image 2" data-description="cute sparkle image" data-tags="sparkle, cute">
         <img src="https://applesause.nekoweb.org/images/moriyoru15.png" alt="Image 3" data-description="cute forest image" data-tags="forest, cute, spooky">
-	<video width="320" height="240" controls>
+	<video width="320" height="240" controls data-description="Sample video description" data-tags="video">
             <source src="https://applesause.nekoweb.org/images/H2Lg7iw_kDClR3Pj.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -79,7 +79,7 @@
 
     <script>
         const images = Array.from(document.querySelectorAll('.gallery img'));
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const videos = Array.from(document.querySelectorAll('.gallery video'));
         const gallery = document.getElementById('gallery');
         const modal = document.getElementById('lightboxModal');
         const modalImage = document.getElementById('modalImage');
@@ -87,7 +87,24 @@
         const nextArrow = document.getElementById('nextArrow');
         let currentIndex = 0;
 
-        images.forEach((img, index) => {
+        const mediaItems = images.concat(videos);
+
+        mediaItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                if (item.tagName.toLowerCase() === 'img') {
+                    modalImage.src = item.src;
+                    modalImage.style.display = 'block';
+                    modalImage.nextElementSibling.style.display = 'none';
+                } else {
+                    modalImage.nextElementSibling.src = item.querySelector('source').src;
+                    modalImage.nextElementSibling.style.display = 'block';
+                    modalImage.style.display = 'none';
+                }
+                modalDescription.textContent = item.getAttribute('data-description');
+                modal.style.display = 'flex';
+            });
+        });
             img.addEventListener('click', () => {
                 currentIndex = index;
                 modalImage.src = img.src;
@@ -97,11 +114,22 @@
             modalDescription.textContent = images[currentIndex].getAttribute('data-description');
         });
 
-        nextArrow.addEventListener('click', (e) => {
+        const updateModalContent = () => {
+            const currentItem = mediaItems[currentIndex];
+            if (currentItem.tagName.toLowerCase() === 'img') {
+                modalImage.src = currentItem.src;
+                modalImage.style.display = 'block';
+                modalImage.nextElementSibling.style.display = 'none';
+            } else {
+                modalImage.nextElementSibling.src = currentItem.querySelector('source').src;
+                modalImage.nextElementSibling.style.display = 'block';
+                modalImage.style.display = 'none';
+            }
+            modalDescription.textContent = currentItem.getAttribute('data-description');
+        };
             e.stopPropagation();
             currentIndex = (currentIndex + 1) % images.length;
-            modalImage.src = images[currentIndex].src;
-            modalDescription.textContent = images[currentIndex].getAttribute('data-description');
+            updateModalContent();
         });
 
         modal.addEventListener('click', (e) => {
@@ -113,7 +141,7 @@
         prevArrow.addEventListener('click', (e) => {
             e.stopPropagation();
             currentIndex = (currentIndex - 1 + images.length) % images.length;
-            modalImage.src = images[currentIndex].src;
+            updateModalContent();
         });
 
         nextArrow.addEventListener('click', (e) => {
@@ -121,14 +149,16 @@
             currentIndex = (currentIndex + 1) % images.length;
             modalImage.src = images[currentIndex].src;
         });
+        const allMedia = images.concat(videos);
+
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 const selectedTags = Array.from(checkboxes)
                     .filter(checkbox => checkbox.checked)
                     .map(checkbox => checkbox.value);
 
-                images.forEach(img => {
-                    const tags = img.getAttribute('data-tags').split(', ');
+                allMedia.forEach(item => {
+                    const tags = item.getAttribute('data-tags').split(', ');
                     if (selectedTags.every(tag => tags.includes(tag))) {
                         img.style.display = 'inline';
                     } else {
